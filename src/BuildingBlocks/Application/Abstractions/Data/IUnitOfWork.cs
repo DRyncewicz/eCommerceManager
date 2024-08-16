@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Modules.Products.Application.Abstractions.Data;
+namespace Application.Abstractions.Data;
 
 public interface IUnitOfWork
 {

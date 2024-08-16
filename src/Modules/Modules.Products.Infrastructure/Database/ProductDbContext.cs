@@ -1,9 +1,10 @@
-﻿using Infrastructure.Database.Configurations;
+﻿using Application.Abstractions.Data;
+using Infrastructure.Database.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Modules.Products.Application.Abstractions.Data;
 using Modules.Products.Domain.Categories;
 using Modules.Products.Domain.Products;
+using Modules.Products.Infrastructure.Database.Seeds;
 using System.Data;
 
 namespace Modules.Products.Infrastructure.Database;
@@ -24,6 +25,9 @@ public class ProductDbContext(DbContextOptions<ProductDbContext> options) : DbCo
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductDbContext).Assembly);
         modelBuilder.ApplyConfiguration(new OutboxMessageConfiguration());
+
+        modelBuilder.ProductCategoryDataSeed();
+        modelBuilder.ProductSubCategoryDataSeed();
     }
 
     public async Task<IDbTransaction> BeginTransactionAsync()

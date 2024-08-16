@@ -4,6 +4,7 @@ using Asp.Versioning.ApiExplorer;
 using Asp.Versioning.Builder;
 using Hangfire;
 using Infrastructure;
+using Modules.Products.Application;
 using Modules.Products.Infrastructure;
 using Serilog;
 using Web.Api.Extensions;
@@ -37,6 +38,7 @@ builder.Services.AddProblemDetails();
 
 builder.Services
     .AddApplication()
+    .AddProductApplication()
     .AddInfrastructure(configuration)
     .AddProductInfrastructure(configuration);
 

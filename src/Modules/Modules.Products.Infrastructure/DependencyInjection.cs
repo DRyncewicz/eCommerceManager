@@ -1,12 +1,14 @@
-﻿using Infrastructure.Outbox;
+﻿using Application.Abstractions.Data;
+using Infrastructure.Outbox;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Modules.Products.Application.Abstractions.Data;
+using Modules.Products.Domain.Products.Repositories;
 using Modules.Products.Infrastructure.Database;
 using Modules.Products.Infrastructure.Outbox;
+using Modules.Products.Infrastructure.Repositories;
 using SharedKernel;
 
 namespace Modules.Products.Infrastructure;
@@ -31,6 +33,8 @@ public static class DependencyInjection
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ProductDbContext>());
 
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductHistoryRepository, ProductHistoryRepository>();
         services.AddScoped<IProcessOutboxMessagesJob, ProcessOutboxMessagesJob>();
 
         return services;

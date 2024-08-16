@@ -12,6 +12,7 @@ using Infrastructure.Events;
 using Infrastructure.Notifications;
 using Infrastructure.Storage;
 using Infrastructure.Time;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;

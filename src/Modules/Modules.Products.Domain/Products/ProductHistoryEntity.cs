@@ -10,7 +10,7 @@ public class ProductHistoryEntity : Entity
 
     public string Description { get; set; }
 
-    public decimal Weight { get; set; }
+    public double Weight { get; set; }
 
     public int ProductSubCategoryId { get; set; }
 
@@ -25,4 +25,21 @@ public class ProductHistoryEntity : Entity
     public DateTimeOffset CreateDateTimeUtc { get; set; }
 
     public virtual ProductEntity Product { get; set; }
+
+    public ProductHistoryEntity(ProductEntity product, string userId)
+    {
+        Price = product.Price;
+        Name = product.Name;
+        Description = product.Description;
+        Weight = product.Weight;
+        ProductSubCategoryId = product.ProductSubCategoryId;
+        UserId = product.UserId;
+        Brand = product.Brand;
+        ProductId = product.Id;
+        CreatorUserId = userId;
+    }
+
+    public ProductHistoryEntity()
+    {
+    }
 }
