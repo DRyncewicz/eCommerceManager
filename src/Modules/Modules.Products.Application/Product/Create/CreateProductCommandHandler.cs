@@ -7,7 +7,7 @@ using SharedKernel;
 
 namespace Modules.Products.Application.Product.Create;
 
-internal class CreateProductCommandHandler(IProductRepository productRepository,
+public class CreateProductCommandHandler(IProductRepository productRepository,
                                            IProductHistoryRepository productHistoryRepository,
                                            IUnitOfWork unitOfWork,
                                            IEventBus eventBus) : ICommandHandler<CreateProductCommand, int>

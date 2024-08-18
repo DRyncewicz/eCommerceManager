@@ -1,10 +1,10 @@
-﻿using System.Data;
-using Application.Abstractions.Data;
+﻿using Application.Abstractions.Data;
 using Npgsql;
+using System.Data;
 
 namespace Infrastructure.Database;
 
-internal sealed class DbConnectionFactory(NpgsqlDataSource dataSource) : IDbConnectionFactory
+public sealed class DbConnectionFactory(NpgsqlDataSource dataSource) : IDbConnectionFactory
 {
     public IDbConnection GetOpenConnection()
     {

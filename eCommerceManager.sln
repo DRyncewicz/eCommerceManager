@@ -65,13 +65,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Users.Domain", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Users.Infrastructure", "src\Modules\Modules.Users.Infrastructure\Modules.Users.Infrastructure.csproj", "{2BEF6EAB-A4BF-45B2-A16C-D90FE50889D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.FunctionalTests", "tests\Api.FunctionalTests\Api.FunctionalTests.csproj", "{1E658221-A43C-4A4A-B182-C84072432BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.FunctionalTests", "tests\Api.FunctionalTests\Api.FunctionalTests.csproj", "{1E658221-A43C-4A4A-B182-C84072432BFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureTests", "tests\ArchitectureTests\ArchitectureTests.csproj", "{D747E10B-83D6-4899-AD79-4E480D153A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureTests", "tests\ArchitectureTests\ArchitectureTests.csproj", "{D747E10B-83D6-4899-AD79-4E480D153A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "tests\Application.UnitTests\Application.UnitTests.csproj", "{34C5FFBF-5195-48BA-BE2B-3A3A5DA9D678}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "tests\Application.UnitTests\Application.UnitTests.csproj", "{34C5FFBF-5195-48BA-BE2B-3A3A5DA9D678}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.IntegrationTests", "tests\Application.IntegrationTests\Application.IntegrationTests.csproj", "{B8E8E6DD-DE41-4264-85CC-DE6EB6A20055}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.IntegrationTests", "tests\Application.IntegrationTests\Application.IntegrationTests.csproj", "{B8E8E6DD-DE41-4264-85CC-DE6EB6A20055}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
