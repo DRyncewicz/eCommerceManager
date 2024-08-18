@@ -3,6 +3,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Modules.Products.Application.Product.Create;
 using Modules.Products.Application.ProductCategory.GetAllCategoriesWithSubCategories;
+using SharedKernel;
+using Web.Api.Extensions;
+using Web.Api.Infrastructure;
 
 namespace eCommerceManager.API.Controllers;
 
@@ -22,7 +25,10 @@ public class ProductController(ISender sender) : BaseController
     {
         var result = await sender.Send(new GetAllCategoriesWithSubCategoriesQuery(), ct);
 
-        return Ok(result);
+        return result.Match(
+            onSuccess: id => Ok(id),
+            onFailure: CustomResults.Problem
+            );
     }
 
     [HttpPost]
@@ -31,8 +37,10 @@ public class ProductController(ISender sender) : BaseController
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
     public async Task<IActionResult> Insert(CreateProductCommand command, CancellationToken ct)
     {
-        var result = await sender.Send(command, ct);
-
-        return Created(string.Empty, result);
+        Result<int> result = await sender.Send<Result<int>>(command, ct);
+        return result.Match(
+            onSuccess: id => Created("", id),
+            onFailure: CustomResults.Problem
+        );
     }
 }

@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 namespace Application.Abstractions.Behaviors;
 
 internal sealed class TransactionalPipelineBehavior<TRequest, TResponse>(
-    //TODO Implementation of DbContextAccessor to manage all modules transactions
     IUnitOfWork unitOfWork,
     ILogger<TransactionalPipelineBehavior<TRequest, TResponse>> logger)
     : IPipelineBehavior<TRequest, TResponse>
