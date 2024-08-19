@@ -77,6 +77,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{89099C
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ecommercemanager-client", "ecommercemanager-client\ecommercemanager-client.esproj", "{D29FDE84-BBB5-4213-BFE3-35FFA6BEAB2E}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3B02134F-636A-4B14-8884-7F736D9B9648}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,10 @@ Global
 		{D29FDE84-BBB5-4213-BFE3-35FFA6BEAB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D29FDE84-BBB5-4213-BFE3-35FFA6BEAB2E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D29FDE84-BBB5-4213-BFE3-35FFA6BEAB2E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3B02134F-636A-4B14-8884-7F736D9B9648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B02134F-636A-4B14-8884-7F736D9B9648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B02134F-636A-4B14-8884-7F736D9B9648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B02134F-636A-4B14-8884-7F736D9B9648}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

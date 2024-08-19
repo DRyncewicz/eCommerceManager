@@ -1,0 +1,49 @@
+version: '3.4'
+
+services:
+  ecm-api:
+    build:
+      context: .
+      dockerfile: src\API\eCommerceManager.API\Dockerfile
+    container_name: ecm.api
+    ports:
+      - 5000:5000
+      - 5001:5001
+    command: ["dotnet", "eCommerceManager.Api.dll"]
+
+  ecm-database:
+    image: postgres:latest
+    container_name: ecm.database
+    environment:
+      - POSTGRES_DB=ecmDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  ecm-redis:
+    image: redis:latest
+    container_name: ecm.redis
+    restart: always
+    ports:
+      - '6379:6379'
+
+  ecm-blob-storage:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    container_name: ecm.blob-storage
+    volumes:
+      - ./.containers/blob_storage/data:/data
+    ports:
+      - "10000:10000"
+    command: "azurite-blob --blobHost 0.0.0.0 -l /data"
+
+  ecm-seq:
+    image: datalust/seq:latest
+    container_name: ecm.seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
