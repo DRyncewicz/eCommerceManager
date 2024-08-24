@@ -8,6 +8,11 @@ services:
       - 5000:5000
       - 5001:5001
     command: ["dotnet", "eCommerceManager.Api.dll"]
+    depends_on:
+      - ecm-database
+      - ecm-redis
+      - ecm-blob-storage
+      - ecm-seq
 
   ecm-database:
     image: postgres:latest
