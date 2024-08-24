@@ -3,8 +3,8 @@ version: '3.4'
 services:
   ecm-api:
     build:
-      context: .
-      dockerfile: src\API\eCommerceManager.API\Dockerfile
+      context: ./src/API/eCommerceManager.API
+      dockerfile: Dockerfile
     container_name: ecm.api
     ports:
       - 5000:5000
@@ -46,4 +46,4 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - 5341:5341
-      - 8081:80
+      - 8081:8081
