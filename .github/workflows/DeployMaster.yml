@@ -13,11 +13,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.9.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        ssh-passphrase: ${{ secrets.SSH_PASSPHRASE }}
+    - name: Setup SSH
+      env:
+        SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        # Setup the SSH agent
+        mkdir -p ~/.ssh
+        ssh-agent -a /tmp/ssh_agent.sock > /dev/null
+        echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
+        echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add - >/dev/null
+
+    - name: Print SSH keys
+      run: ssh-add -l
 
     - name: Copy files to VPS
       run: |
