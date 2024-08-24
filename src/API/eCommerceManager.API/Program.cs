@@ -46,14 +46,7 @@ builder.Services
 //test
 builder.WebHost.UseKestrel(options =>
 {
-    // U¿yj certyfikatu z zamontowanej lokalizacji
-    var cert = new X509Certificate2("/https/privkey.pem", "", X509KeyStorageFlags.MachineKeySet);
-
     options.ListenAnyIP(5000); // HTTP
-    options.ListenAnyIP(5001, listenOptions =>
-    {
-        listenOptions.UseHttps(cert);
-    });
 });
 //
 
