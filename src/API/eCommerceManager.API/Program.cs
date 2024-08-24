@@ -41,6 +41,8 @@ builder.Services
     .AddProductApplication()
     .AddInfrastructure(configuration)
     .AddProductInfrastructure(configuration);
+
+//test
 builder.WebHost.UseKestrel(options =>
 {
     options.ListenAnyIP(5000);
@@ -49,6 +51,7 @@ builder.WebHost.UseKestrel(options =>
         listenOptions.UseHttps("/https/fullchain.pem", "/https/privkey.pem");
     });
 });
+//
 
 builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
 
