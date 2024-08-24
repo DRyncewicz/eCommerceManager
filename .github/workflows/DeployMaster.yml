@@ -18,11 +18,19 @@ jobs:
         SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
-        # Setup the SSH agent
-        mkdir -p ~/.ssh
-        ssh-agent -a /tmp/ssh_agent.sock > /dev/null
-        echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
-        echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add - >/dev/null
+        # Start ssh-agent
+        echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        
+        # Start the SSH agent and set environment variables
+        eval "$(ssh-agent -s)"
+        
+        # Create SSH_ASKPASS script
+        echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass
+        chmod +x ~/.ssh_askpass
+        
+        # Add the SSH key
+        DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add ~/.ssh/id_rsa
 
     - name: Print SSH keys
       run: ssh-add -l
