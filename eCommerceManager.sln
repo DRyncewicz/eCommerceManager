@@ -18,6 +18,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4341C20E-FD65-4D53-AAAB-CE220D26DB8A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{86998C0B-E265-4A5D-B13D-4829F1C901F1}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedKernal", "src\SharedKernal\SharedKernal.csproj", "{21FEC259-F841-4DBE-A2D5-E4933518BED2}"
 EndProject
