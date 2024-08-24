@@ -7,6 +7,7 @@ using Infrastructure;
 using Modules.Products.Application;
 using Modules.Products.Infrastructure;
 using Serilog;
+using System.Security.Cryptography.X509Certificates;
 using Web.Api.Extensions;
 using Web.Api.Infrastructure;
 using Web.Api.OpenApi;
@@ -45,10 +46,13 @@ builder.Services
 //test
 builder.WebHost.UseKestrel(options =>
 {
-    options.ListenAnyIP(5000);
+    // U¿yj certyfikatu z zamontowanej lokalizacji
+    var cert = new X509Certificate2("/https/privkey.pem", "", X509KeyStorageFlags.MachineKeySet);
+
+    options.ListenAnyIP(5000); // HTTP
     options.ListenAnyIP(5001, listenOptions =>
     {
-        listenOptions.UseHttps("/https/fullchain.pem", "/https/privkey.pem");
+        listenOptions.UseHttps(cert);
     });
 });
 //
