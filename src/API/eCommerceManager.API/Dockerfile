@@ -43,8 +43,14 @@ RUN dotnet publish "./eCommerceManager.API.csproj" -c $BUILD_CONFIGURATION -o /a
 # U¿yj obrazu bazowego
 FROM base AS final
 
+# Prze³¹cz na u¿ytkownika root, aby zainstalowaæ OpenSSL
+USER root
+
 # Zainstaluj OpenSSL
 RUN apt-get update && apt-get install -y openssl
+
+# Powróæ do u¿ytkownika 'app'
+USER app
 
 # Ustaw katalog roboczy
 WORKDIR /app
