@@ -13,10 +13,6 @@ services:
       - ecm-redis
       - ecm-blob-storage
       - ecm-seq
-    volumes:
-      - /etc/letsencrypt/live/vps-f8943a3b.vps.ovh.net/fullchain.pem:/app/certificates/fullchain.pem:ro
-      - /etc/letsencrypt/live/vps-f8943a3b.vps.ovh.net/privkey.pem:/app/certificates/privkey.pem:ro
-
 
   ecm-database:
     image: postgres:latest
