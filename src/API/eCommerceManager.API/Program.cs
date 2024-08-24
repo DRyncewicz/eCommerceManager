@@ -81,8 +81,10 @@ if (app.Environment.IsDevelopment())
         app.ApplyMigrations();
     });
 }
-
-app.UseHttpsRedirection();
+if (app.Environment.IsProduction())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseAuthorization();
 
